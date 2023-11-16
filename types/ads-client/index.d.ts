@@ -356,3 +356,19 @@ export class Client extends EventEmitter {
 
     amsNetIdStrToByteArray(str: any): any[];
 }
+
+export interface AdsErrorInfo {
+    adsErrorType: string,
+    adsErrorCode: number,
+    adsErrorStr: string
+}
+
+export interface ClientException extends Error {
+    name: string,
+    sender: string,
+    adsError: boolean,
+    adsErrorInfo: AdsErrorInfo | null,
+    metaData: any,
+    errorTrace: string[],
+    getInnerException: null | (() => Error),
+}
